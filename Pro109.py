@@ -1,9 +1,8 @@
 import pandas as pd
 import statistics
 import csv
-
-
-
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
 
 
 df = pd.read_csv("Pro109Data.csv")
@@ -31,7 +30,7 @@ print("{}% of data for math score lies within 1 standard deviation".format(len(l
 print("{}% of data for math score lies within 2 standard deviations".format(len(lst_of_data_within_2_std_deviation)*100.0/len(lst)))
 print("{}% of data for math score lies within 3 standard deviations".format(len(lst_of_data_within_3_std_deviation)*100.0/len(lst)))
 
-fig = ff.create_distplot([data], ["reading scores"], show_hist=False)
+fig = ff.create_distplot([lst], ["reading scores"], show_hist=False)
 fig.add_trace(go.Scatter(x=[mean, mean], y=[0, 0.17], mode="lines", name="MEAN")) 
 fig.add_trace(go.Scatter(x=[math_first_std_deviation_start, math_first_std_deviation_start], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 1")) 
 fig.add_trace(go.Scatter(x=[math_first_std_deviation_end, math_first_std_deviation_end], y=[0, 0.17], mode="lines", name="STANDARD DEVIATION 1")) 
